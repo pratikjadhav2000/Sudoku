@@ -43,6 +43,8 @@ return 0;
   }
   //check specific box
   int check_box( int row,int column,int sudoku[9][9] ){
+
+        //calculate box number
         int box_no = row - ( row % 3 ) + ( column / 3 ) ;
 
         //starting row postion of the box
@@ -97,6 +99,8 @@ for (size_t i = 0; i < 9; i++) {
 
 //add the positions of null/zero elements in the stack
        /* todo */
+
+
 int flag=0;
 
 //check row elements
@@ -117,7 +121,7 @@ int flag=0;
    }
    if( flag == 1 ){
      std::cout << "same values found in row "<<i<< '\n';
-     return 0;
+     return 1;
    }
 
  }
@@ -143,7 +147,7 @@ int flag=0;
    }
    if( flag == 1 ){
      std::cout << "same values found in column "<<j<< '\n';
-     return 0;
+     return 1;
    }
 
  }
@@ -155,16 +159,12 @@ int flag=0;
  flag=0;
 
 for (size_t i = 0; i < 3; i++) {
-
-
-
  for (size_t j = 0; j < 3; j++) {
 
    int box_no = (i*3)+j;
    buffer_checker_reset();
 
    for (size_t k = 0; k < 3; k++) {
-
      for (size_t l = 0; l < 3; l++) {
 
              int box_row = (i*3)+k ;
@@ -191,10 +191,9 @@ for (size_t i = 0; i < 3; i++) {
 
  }
  if( flag == 1 )
-     return 0;
+     return 1;
 
 }
 
-
-  return 1;
+  return 0;
 }
