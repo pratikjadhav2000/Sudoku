@@ -11,6 +11,7 @@ void buffer_checker_reset(){
   }
 }
 
+
   //check specific row
  int check_row( int row,int sudoku[9][9] ){
 
@@ -68,6 +69,20 @@ return 0;
   return 0;
   }
 
+  //check the specific postion
+   int check_position( int i,int j,int sudoku[9][9] ){
+
+          if ( check_row( i, sudoku ) )
+          return 1;
+          if ( check_column( j,sudoku ) )
+          return 1;
+          if ( check_box( i,j,sudoku ) )
+          return 1;
+
+     return 0;
+   }
+
+   //check full sudoku
 int sudoku_checker(  int sudoku[9][9]  ){
 
 //check the input count
@@ -97,16 +112,10 @@ for (size_t i = 0; i < 9; i++) {
 
 //std::cout << input_count << '\n';
 
-//add the positions of null/zero elements in the stack
-       /* todo */
-
-
 int flag=0;
 
 //check row elements
-
  for (size_t i = 0; i < 9; i++) {
-
 
    buffer_checker_reset();
 
@@ -125,7 +134,6 @@ int flag=0;
    }
 
  }
-
 
 //check column elements
 
