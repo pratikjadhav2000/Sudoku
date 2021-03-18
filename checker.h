@@ -1,8 +1,3 @@
-
-#include<iostream>
-#include<stack>
-using namespace std;
-
 //create a buffer for checking
 int buffer_checker[10];
 void buffer_checker_reset(){
@@ -85,123 +80,21 @@ return 0;
    //check full sudoku
 int sudoku_checker(  int sudoku[9][9]  ){
 
-//check the input count
-/*
-int input_count=0;
-
-for (size_t i = 0; i < 9; i++) {
-
- int flag=0;
-
- for (size_t j = 0; j < 9; j++) {
-   if( input_count != 17 ){
-     flag=1;
-     std::cout << "Error : Input is not equal to 17" << '\n';
-     break;
-   }
-
-   if( sudoku[i][j] > 0 && sudoku[i][j] < 10 )
-   input_count++;
- }
-
- if( flag == 1)
- break;
-
-}
-*/
-
-//std::cout << input_count << '\n';
-
-int flag=0;
-
-//check row elements
- for (size_t i = 0; i < 9; i++) {
-
-   buffer_checker_reset();
-
-   for (size_t j = 0; j < 9; j++) {
-
-       if( buffer_checker[sudoku[i][j]] != 0 ){
-         flag=1;
-         break;
-       }
-       buffer_checker[sudoku[i][j]] = sudoku[i][j];
-
-   }
-   if( flag == 1 ){
-     std::cout << "same values found in row "<<i<< '\n';
-     return 1;
-   }
-
- }
-
-//check column elements
-
- flag=0;
-
- for (size_t j = 0; j < 9; j++) {
-
-
-   buffer_checker_reset();
-
-   for (size_t i = 0; i < 9; i++) {
-
-       if( buffer_checker[sudoku[i][j]] != 0 ){
-         flag=1;
-         break;
-       }
-       buffer_checker[sudoku[i][j]] = sudoku[i][j];
-
-   }
-   if( flag == 1 ){
-     std::cout << "same values found in column "<<j<< '\n';
-     return 1;
-   }
-
- }
-
-
-
-//check box elements
-
- flag=0;
-
-for (size_t i = 0; i < 3; i++) {
- for (size_t j = 0; j < 3; j++) {
-
-   int box_no = (i*3)+j;
-   buffer_checker_reset();
-
-   for (size_t k = 0; k < 3; k++) {
-     for (size_t l = 0; l < 3; l++) {
-
-             int box_row = (i*3)+k ;
-             int box_column = (j*3)+l ;
-
-       if( buffer_checker[sudoku[box_row][box_column]] != 0 ){
-         //std::cout << "row"<<box_row<<"column"<<box_column<< '\n';
-         flag=1;
-         break;
-       }
-       buffer_checker[sudoku[box_row][box_column]] = sudoku[box_row][box_column];
-
-         //  std::cout << (i*3)+k <<"\t"<<(j*3)+l << '\n';
-     }
-
-     if( flag == 1 )
-       break;
-
-   }
-   if( flag == 1 ){
-     std::cout << "same values found in box "<< box_no << '\n';
-     break;
-   }
-
- }
- if( flag == 1 )
+//check rows
+ for (size_t i = 0; i < 9; i++)
+   if( check_row(i,sudoku) )
      return 1;
 
-}
+//check columns
+ for (size_t j = 0; j < 9; j++)
+   if( check_column(j,sudoku) )
+     return 1;
+
+//check boxes
+for (size_t i = 0; i < 3; i++)
+ for (size_t j = 0; j < 3; j++)
+      if( check_box( i*3, j*3, sudoku ) )
+          return 1;
 
   return 0;
 }
