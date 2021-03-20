@@ -108,6 +108,7 @@ return return_flag;
  int main(){
 
 std::cout << "                  Given Sudoku" << "\n \n \n";
+  
     //sudoku input
    for (size_t i = 0; i < 9; i++) {
      std::cout << "" << '\n';
@@ -116,8 +117,8 @@ std::cout << "                  Given Sudoku" << "\n \n \n";
 
      }
    }
+  
 std::cout << "\n \n \n" << '\n';
-
 
 // Solve the Sudoku
 while( solve() ){}
