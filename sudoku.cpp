@@ -101,18 +101,6 @@ int solve(){
 
   }
 
-/*
-  for (size_t i = 0; i < positions.size(); i++) {
-
-              std::cout << positions[i] << "  :  ";
-              for (size_t j = 0; j < possible_values[ positions[i] ].size() ; j++) {
-                          std::cout <<possible_values[ positions[i] ][j]<<"\t";
-              }
-              std::cout << "Size : "<<possible_values[ positions[i] ].size()<< '\n';
-  }
-std::cout << "****************************************************" << '\n';
-*/
-
 return return_flag;
 }
 
@@ -131,14 +119,12 @@ std::cout << "                  Given Sudoku" << "\n \n \n";
 std::cout << "\n \n \n" << '\n';
 
 
-//int cnt=0;
-while( solve() ){
-    //cnt++;
-}
-//std::cout <<"COUNT IS :::::::::::::  "<< cnt << '\n';
-//solve();
+// Solve the Sudoku
+while( solve() ){}
+
 
 std::cout << "                  Solved Sudoku" << "\n \n \n";
+  
   //sudoku output
 for (size_t i = 0; i < 9; i++) {
   std::cout << "" << '\n';
@@ -147,6 +133,7 @@ for (size_t i = 0; i < 9; i++) {
 
   }
 }
+  
 std::cout << "\n \n \n" << '\n';
 
 
@@ -158,7 +145,10 @@ std::cout << "Sudoku check : Ok!" << '\n';
 
    return 0;
  }
+
  /*
+ Some examples to test as input 
+ 
  Perfect Sudoku :
  {
  4,3,5,2,6,9,7,8,1,
@@ -198,16 +188,3 @@ Puzzle Sudoku :
   0,6,0,0,2,0,0,3,7
 };
 
-//hard
-{
-4,0,0,9,0,0,8,6,0,
-0,0,0,0,0,7,2,0,0,
-0,3,0,2,5,0,0,0,0,
-0,1,7,0,0,5,0,2,9,
-0,9,0,0,0,6,0,0,0,
-0,6,0,0,0,0,0,7,0,
-0,0,0,4,0,0,5,0,0,
-7,0,0,0,0,0,9,0,0,
-0,0,0,0,6,2,4,0,0
-};
- */
